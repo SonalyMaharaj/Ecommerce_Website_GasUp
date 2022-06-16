@@ -1,0 +1,263 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="GasUp.master.cs" Inherits="GasUp_Website.GasUp" %>
+
+<!DOCTYPE html>
+
+<html lang="English">
+<head runat="server">
+    <title>GasUp</title>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+
+<link rel="stylesheet" type="text/css" href="layout/styles/bootstrap_plain.css"> <!--if the displays look werid, I added this bootstrap file-->
+<link href="plugins/fontawesome-free-5.0.1/css/fontawesome-all.css" rel="stylesheet" type="text/css">
+<link rel="stylesheet" type="text/css" href="layout/additional/blog_single_styles.css">
+<link href="layout/styles/layout.css" rel="stylesheet" type="text/css" media="all">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+
+</head>
+<body id="top">
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<div class="wrapper row0">
+  <div id="topbar" class="hoc clear" runat="server">
+    <div class="fl_left"> 
+      <!-- ################################################################################################ -->
+      <ul class="nospace">
+        <li id="welcometag" runat="server">Welcome</li>
+        <li><i class="fas fa-phone rgtspace-5"></i> (123) 456 7890</li>
+        <li><i class="far fa-envelope rgtspace-5"></i> gasup@gmail.com</li>
+      </ul>
+      <!-- ################################################################################################ -->
+    </div>
+    <div class="fl_right"> 
+      <!-- ################################################################################################ -->
+      
+	  <ul class="nospace" runat="server" id="loggedin1" visible="false">
+		<li><a href="logout.aspx" title="logout"><i class="fas fa-sign-out-alt"></i></a></li>
+        <li><a href="Cart.aspx" title="Cart"><i class="fas fa-shopping-cart" id="carttext" runat="server"></i></a></li>
+		<li id="searchform1"><!--when logged in-->
+          <div>
+            <form action="#" method="post">
+              <fieldset>
+                <legend>Quick Search:</legend>
+                <input type="text" placeholder="Enter search term&hellip;">
+                <button type="submit"><i class="fas fa-search"></i></button>
+              </fieldset>
+            </form>
+          </div>
+        </li>
+      </ul>
+	  
+        <ul class="nospace" runat="server" id="loggedin2">
+        <li><a href="LogIn.aspx" title="Login"><i class="fas fa-sign-in-alt"></i></a></li>
+        <li><a href="Register.aspx" title="Sign Up"><i class="fas fa-edit"></i></a></li>
+		
+        <li id="searchform2"> <!--when not logged in-->
+          <div>
+            <form action="#" method="post">
+              <fieldset>
+                <legend>Quick Search:</legend>
+                <input type="text" placeholder="Enter search term&hellip;">
+                <button type="submit"><i class="fas fa-search"></i></button>
+              </fieldset>
+            </form>
+          </div>
+        </li>
+
+        </ul>
+        
+        
+        </div>
+      <!-- ################################################################################################ -->
+    </div>
+  </div>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- Top Background Image Wrapper -->
+<div class="bgded" style="background-image:url('images/demo/backgrounds/logo.png');">
+  <!-- ################################################################################################ -->
+  <div class="wrapper row1">
+    <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left"> 
+        <!-- ################################################################################################ -->
+        <h1><a href="#">Gas Up</a></h1>
+        <!-- ################################################################################################ -->
+      </div>
+      <nav id="mainav" class="fl_right"> 
+        <!-- ################################################################################################ -->
+        <ul class="clear" runat="server" id="login">
+          <li class="active"><a href="MasterHome.aspx">Home</a></li>
+          <li ><a class="drop" href="#">Products</a>
+            <ul >
+              <li runat="server" id="add_product" visible="false"><a href="add_product.aspx?id=999">Add Product</a></li>
+              <li runat="server" id="edit_product" visible="false"><a href="ListOfUsers.aspx?id=99">Edit Product</a><!--code goes here--></li> <!--pass query string-->
+              <li runat="server" id="delete_product" visible="false"><a href="ListOfUsers.aspx?id=9">Delete Product</a><!--code goes here--></li> <!--pass query string-->
+              
+              <li><a href="InstallationsMaster.aspx">Installations</a></li>
+                <li><a href="GasTanks.aspx">Gas Tanks</a>
+              </li>
+            </ul>
+          </li>
+          <li><a href="AboutUsMaster.aspx">About Us</a></li>
+          <li><a href="TestimonialMaster.aspx">Testimonials</a></li>
+          <li><a href="ContactUsMaster.aspx">Contact Us</a></li>
+          <li runat="server" id="reports" visible="false"><a href="Dashboard.aspx">Reports</a></li>
+          <li id="customer_account" runat="server"><a href="Register.aspx" runat="server">My Account</a></li>
+          <li id="prev_purchases" runat="server"  visible="false"><a href="more.aspx?invoice=0" runat="server">Previous Purchases</a></li>
+
+          <li class="drop"  id="Manager_userOpt" runat="server" visible="false"><a href="Register.aspx" runat="server">User</a>
+              <ul>
+                  <li><a href="Register.aspx">My Account</a></li> <!--Will allow the Manager to edit his information if he clicks on this tab-->
+                  <li><a href="Register.aspx?id=1">Add User</a></li>      <!--Will allow the Manager to edit his information if he clicks on this tab-->
+                  <li><a href="ListOfUsers.aspx?id=98">Edit User</a></li>
+                  <li><a href="listpurchases.aspx">Purchases</a></li>
+                  <li><a href="listpurchases.aspx?cocid=0">COC Applications</a></li>
+                  <li><a href="listpurchases.aspx?contactus=0">Customer Queries</a></li>
+                  <li><a href="listpurchases.aspx?tasked=0">Tasked Employees</a></li>
+
+                </ul>
+
+          </li>
+          <li class="drop"  id="emp_navbar" runat="server" visible="false"><a href="Register.aspx" runat="server">User</a>
+              <ul>
+                  <li><a href="Register.aspx">My Account</a></li> <!--Will allow the Manager to edit his information if he clicks on this tab-->
+                  <li><a href="listpurchases.aspx">Purchases</a></li>
+
+                </ul>
+
+          </li>
+            
+        </ul>
+        <!-- ################################################################################################ -->
+      </nav>
+    </header>
+       
+  </div>
+   
+</div>
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+  <!-- ################################################################################################ -->
+
+    
+
+            <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+
+            </asp:ContentPlaceHolder>
+
+    <div class="wrapper coloured">
+  <section id="ctdetails" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <ul class="nospace clear">
+      <li class="one_quarter first">
+        <div class="block clear"><a href="#"><i class="fas fa-phone"></i></a> <span><strong>Give us a call:</strong> (123) 456 7890</span></div>
+      </li>
+      <li class="one_quarter">
+        <div class="block clear"><a href="ContactUsMaster.aspx"><i class="fas fa-envelope"></i></a> <span><strong>Send us a mail:</strong> gasup@gmail.com</span></div>
+      </li>
+      <li class="one_quarter">
+        <div class="block clear"><a href="#"><i class="fas fa-clock"></i></a> <span><strong> Monday - Saturday:</strong> 08.00am - 18.00pm</span></div>
+      </li>
+      <li class="one_quarter">
+        <div class="block clear"><a href="Location.aspx"><i class="fas fa-map-marker-alt"></i></a> <span><strong>Come visit us:</strong> Directions to <a href="#">our location</a></span></div>
+      </li>
+    </ul>
+    <!-- ################################################################################################ -->
+  </section>
+</div>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+
+<div class="wrapper row5">
+  <div id="copyright" class="hoc clear"> 
+    <!-- ################################################################################################ -->
+    <p class="fl_left">Copyright &copy; 2018 - All Rights Reserved - <a href="#">Domain Name</a></p>
+    <p class="fl_right">Template by <a target="_blank" href="https://www.os-templates.com/" title="Free Website Templates">OS Templates</a></p>
+    <!-- ################################################################################################ -->
+  </div>
+</div>
+    <!--FOOTER-->
+<footer class="footer">
+    
+		<div class="container">
+			<div class="row">
+                
+				<div class="col-lg-6 footer_col">
+					<div class="footer_column footer_contact">
+						<div class="logo_container">
+							<div class="logo"><a href="#"><font  color="white">GAS UP</a></div>
+						</div>
+                        
+						<div class="footer_title"><font  color="white">Need Assistance? Contact Us. We're available 24/7! </font></div>
+						<div class="footer_phone">(123) 456 7890</div>
+                         
+						<div class="footer_contact_text">
+							<p>17 Princess Road, Gauteng</p>
+							<p>Johannesburg South NW18JR, ZA</p>
+						</div>
+						<div class="footer_social">
+                            <font  color="white">
+							<ul>
+								<li><a href="#"><i class="fab fa-facebook-f"></i></a></li>
+								<li><a href="#"><i class="fab fa-twitter"></i></a></li>
+								<li><a href="#"><i class="fab fa-youtube"></i></a></li>
+								<li><a href="#"><i class="fab fa-google"></i></a></li>
+								<li><a href="#"><i class="fab fa-vimeo-v"></i></a></li>
+							</ul>
+                                </font>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-lg-3 offset-lg-3">
+					<div class="footer_column">
+						<div class="footer_title"><font  color="white"><b>Find it Fast</b></font></div>
+						<ul class="footer_list">
+							<li><a href="InstallationsMaster.aspx"><font  color="white">Installations</font></a></li>
+							<li><a href="GasTanks.aspx"><font  color="white">Gas Tanks &amp; Photos</a></li>
+						</ul>
+                        <br>
+						<div class="footer_subtitle"><font  color="white"><b>Gadgets</b></div>
+						<ul class="footer_list">
+							<li><a href="https://play.google.com/store/apps/details?id=com.gasup.customer&hl=en&gl=US"><font  color="white">Download The GasUp App</a></li>
+						</ul>
+					</div>
+				</div>
+
+				<div class="col-lg-3">
+					<div class="footer_column">
+						<div class="footer_title"><font  color="white"><b>Customer Care</b></div>
+						<ul class="footer_list">
+							<li><a href="Register.aspx"><font  color="white">My Account</a></li>
+							<li><a href="https://play.google.com/store/apps/details?id=com.gasup.customer&hl=en&gl=US"><font  color="white">Order Tracking</a></li>
+							<li><a href="#"><font  color="white">Wish List</a></li>
+							<li><a href="ContactUsMaster.aspx"><font  color="white">Customer Services</a></li>
+							<li><a href="#"><font  color="white">Returns / Exchange</a></li>
+							<li><a href="TestimonialMaster.aspx"><font  color="white">Testimonials</a></li>
+							<li><a href="ContactUsMaster.aspx"><font  color="white">FAQs</a></li>
+							<li><a href="ContactUsMaster.aspx"><font  color="white">Product Support</a></li>
+						</ul>
+					</div>
+				</div>
+                   
+			</div>
+		</div>
+        
+	</footer>
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<!-- ################################################################################################ -->
+<a id="backtotop" href="#top"><i class="fas fa-chevron-up"></i></a>
+<!-- JAVASCRIPTS -->
+<script src="layout/scripts/jquery.min.js"></script>
+<script src="layout/scripts/jquery.backtotop.js"></script>
+<script src="layout/scripts/jquery.mobilemenu.js"></script>
+
+</body>
+</html>
